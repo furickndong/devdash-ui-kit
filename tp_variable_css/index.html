@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevDash — Admin Dashboard</title>
+
+  <!-- Un seul import CSS grâce au global.css -->
+  <link rel="stylesheet" href="global.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     APP LAYOUT
+     ══════════════════════════════════════════════════════════ -->
+<div class="app-layout" id="app">
+
+  <!-- ── SIDEBAR ──────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+
+    <!-- Logo -->
+    <div class="sidebar__logo">
+      <div class="sidebar__logo-icon">⚡</div>
+      <span class="sidebar__logo-text">Dev<span>Dash</span></span>
+    </div>
+
+    <!-- Navigation principale -->
+    <nav class="sidebar__nav">
+
+      <span class="nav-section-label">Principal</span>
+
+      <a href="#" class="nav-item active">
+        <span class="nav-item__icon">🏠</span>
+        Dashboard
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-item__icon">👥</span>
+        Utilisateurs
+        <span class="nav-item__badge">12</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-item__icon">📊</span>
+        Analytiques
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-item__icon">📦</span>
+        Projets
+      </a>
+
+      <span class="nav-section-label">Gestion</span>
+
+      <a href="#" class="nav-item">
+        <span class="nav-item__icon">💳</span>
+        Facturation
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-item__icon">🔔</span>
+        Notifications
+        <span class="nav-item__badge">3</span>
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-item__icon">🔐</span>
+        Permissions
+      </a>
+
+      <span class="nav-section-label">Système</span>
+
+      <a href="#" class="nav-item">
+        <span class="nav-item__icon">⚙️</span>
+        Paramètres
+      </a>
+      <a href="#" class="nav-item">
+        <span class="nav-item__icon">📚</span>
+        Documentation
+      </a>
+
+    </nav>
+
+    <!-- User footer -->
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">AL</div>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Alex Laurent</div>
+          <div class="sidebar__user-role">Super Admin</div>
+        </div>
+      </div>
+    </div>
+
+  </aside><!-- /sidebar -->
+
+
+  <!-- ── ZONE PRINCIPALE ──────────────────────────────────── -->
+  <div class="main-wrapper">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar__left">
+        <h1 class="topbar__title">Dashboard</h1>
+        <span class="topbar__breadcrumb">Accueil / Tableau de bord</span>
+      </div>
+      <div class="topbar__right">
+
+        <!-- Barre de recherche -->
+        <div class="search-box">
+          <span class="search-box__icon">🔍</span>
+          <input type="text" placeholder="Rechercher…" />
+        </div>
+
+        <!-- Bouton notifications -->
+        <button class="topbar__icon-btn" title="Notifications">
+          🔔
+          <span class="topbar__notif-dot"></span>
+        </button>
+
+        <!-- Bouton messages -->
+        <button class="topbar__icon-btn" title="Messages">💬</button>
+
+        <!-- Toggle thème alternatif -->
+        <button class="topbar__theme-toggle" id="themeToggle" title="Changer de thème">🎨</button>
+
+      </div>
+    </header><!-- /topbar -->
+
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+
+      <!-- ── ALERTE INFO ──────────────────────────────────── -->
+      <div class="alert alert--success mb-6">
+        ✅ <span>Bienvenue sur <strong>DevDash</strong> — Toute l'UI est pilotée par des variables CSS.</span>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════
+           GRILLE STATS (4 colonnes)
+           ══════════════════════════════════════════════════ -->
+      <div class="stats-grid">
+
+        <!-- Utilisateurs -->
+        <div class="card stat-card stat-card--info">
+          <div class="stat-card__icon-wrap">👥</div>
+          <div class="stat-card__label">Utilisateurs actifs</div>
+          <div class="stat-card__value">3 842</div>
+          <div class="stat-card__trend trend--up">
+            ↑ +12.5% ce mois
+          </div>
+        </div>
+
+        <!-- Revenus -->
+        <div class="card stat-card stat-card--success">
+          <div class="stat-card__icon-wrap">💰</div>
+          <div class="stat-card__label">Revenus mensuels</div>
+          <div class="stat-card__value">48 290 €</div>
+          <div class="stat-card__trend trend--up">
+            ↑ +8.3% vs mois dernier
+          </div>
+        </div>
+
+        <!-- Projets -->
+        <div class="card stat-card">
+          <div class="stat-card__icon-wrap">📦</div>
+          <div class="stat-card__label">Projets actifs</div>
+          <div class="stat-card__value">127</div>
+          <div class="stat-card__trend trend--flat">
+            → Stable cette semaine
+          </div>
+        </div>
+
+        <!-- Erreurs -->
+        <div class="card stat-card stat-card--error">
+          <div class="stat-card__icon-wrap">⚠️</div>
+          <div class="stat-card__label">Erreurs critiques</div>
+          <div class="stat-card__value">4</div>
+          <div class="stat-card__trend trend--down">
+            ↓ −2 depuis hier
+          </div>
+        </div>
+
+      </div><!-- /stats-grid -->
+
+
+      <!-- ══════════════════════════════════════════════════
+           GRILLE PRINCIPALE (2/3 + 1/3)
+           ══════════════════════════════════════════════════ -->
+      <div class="dashboard-grid">
+
+        <!-- CARTE : Activité (graphe à barres) -->
+        <div class="card card--glow">
+          <div class="card__header">
+            <div>
+              <div class="card__title">Activité des 7 derniers jours</div>
+              <div class="card__subtitle">Nombre de connexions par jour</div>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn btn-sm btn-secondary">Semaine</button>
+              <button class="btn btn-sm btn-ghost">Mois</button>
+            </div>
+          </div>
+
+          <div class="chart-area">
+            <div class="chart-bars">
+              <div class="chart-bar" style="height: 55%;" title="Lun — 312 connexions"></div>
+              <div class="chart-bar" style="height: 70%;" title="Mar — 448 connexions"></div>
+              <div class="chart-bar" style="height: 45%;" title="Mer — 287 connexions"></div>
+              <div class="chart-bar active" style="height: 90%;" title="Jeu — 574 connexions"></div>
+              <div class="chart-bar" style="height: 65%;" title="Ven — 415 connexions"></div>
+              <div class="chart-bar chart-bar--accent" style="height: 35%;" title="Sam — 223 connexions"></div>
+              <div class="chart-bar chart-bar--accent" style="height: 28%;" title="Dim — 178 connexions"></div>
+            </div>
+          </div>
+
+          <!-- Labels -->
+          <div class="flex" style="padding: 0 var(--space-2); gap: var(--space-2);">
+            <span class="text-xs text-muted" style="flex:1;text-align:center">Lun</span>
+            <span class="text-xs text-muted" style="flex:1;text-align:center">Mar</span>
+            <span class="text-xs text-muted" style="flex:1;text-align:center">Mer</span>
+            <span class="text-xs text-muted" style="flex:1;text-align:center">Jeu</span>
+            <span class="text-xs text-muted" style="flex:1;text-align:center">Ven</span>
+            <span class="text-xs text-muted" style="flex:1;text-align:center">Sam</span>
+            <span class="text-xs text-muted" style="flex:1;text-align:center">Dim</span>
+          </div>
+        </div>
+
+        <!-- CARTE : Répartition trafic (donut) -->
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <div class="card__title">Sources de trafic</div>
+              <div class="card__subtitle">Cette semaine</div>
+            </div>
+          </div>
+
+          <div class="donut-wrap" style="flex-direction:column; gap: var(--space-5);">
+            <!-- Donut simulé en CSS conic-gradient -->
+            <div class="donut" style="background: conic-gradient(
+              var(--color-primary) 0% 42%,
+              var(--color-accent)  42% 67%,
+              var(--color-success) 67% 82%,
+              var(--color-warning) 82% 100%
+            );">
+              <div style="width:72px;height:72px;border-radius:50%;background:var(--bg-surface);display:flex;align-items:center;justify-content:center;">
+                <div class="donut-center">
+                  <div class="donut-center__value">2.4k</div>
+                  <div class="donut-center__label">total</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="donut-legend">
+              <div class="donut-legend-item">
+                <div class="donut-legend-dot" style="background:var(--color-primary)"></div>
+                <span class="donut-legend-label">Direct</span>
+                <span class="donut-legend-value">42%</span>
+              </div>
+              <div class="donut-legend-item">
+                <div class="donut-legend-dot" style="background:var(--color-accent)"></div>
+                <span class="donut-legend-label">Organique</span>
+                <span class="donut-legend-value">25%</span>
+              </div>
+              <div class="donut-legend-item">
+                <div class="donut-legend-dot" style="background:var(--color-success)"></div>
+                <span class="donut-legend-label">Réseaux sociaux</span>
+                <span class="donut-legend-value">15%</span>
+              </div>
+              <div class="donut-legend-item">
+                <div class="donut-legend-dot" style="background:var(--color-warning)"></div>
+                <span class="donut-legend-label">Référents</span>
+                <span class="donut-legend-value">18%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /dashboard-grid -->
+
+
+      <!-- ══════════════════════════════════════════════════
+           GRILLE BASSE : Tableau + Activité
+           ══════════════════════════════════════════════════ -->
+      <div class="dashboard-grid">
+
+        <!-- TABLEAU UTILISATEURS -->
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <div class="card__title">Derniers utilisateurs</div>
+              <div class="card__subtitle">12 nouveaux cette semaine</div>
+            </div>
+            <button class="btn btn-sm btn-primary">+ Ajouter</button>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Utilisateur</th>
+                <th>Rôle</th>
+                <th>Statut</th>
+                <th>Progression</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="table-user">
+                    <div class="table-avatar">ML</div>
+                    <div>
+                      <div class="table-user-name">Marie Lebrun</div>
+                      <div class="table-user-email">m.lebrun@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge--primary">Admin</span></td>
+                <td><span class="badge badge--success">Actif</span></td>
+                <td>
+                  <div class="progress" style="width:120px">
+                    <div class="progress__bar progress--success" style="width:88%"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex gap-2">
+                    <button class="btn btn-sm btn-ghost">✏️</button>
+                    <button class="btn btn-sm btn-danger">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user">
+                    <div class="table-avatar" style="background:linear-gradient(135deg,var(--color-success),var(--color-accent))">TD</div>
+                    <div>
+                      <div class="table-user-name">Thomas Dupont</div>
+                      <div class="table-user-email">t.dupont@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge--info">Dev</span></td>
+                <td><span class="badge badge--success">Actif</span></td>
+                <td>
+                  <div class="progress" style="width:120px">
+                    <div class="progress__bar" style="width:62%"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex gap-2">
+                    <button class="btn btn-sm btn-ghost">✏️</button>
+                    <button class="btn btn-sm btn-danger">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user">
+                    <div class="table-avatar" style="background:linear-gradient(135deg,var(--color-warning),var(--color-error))">SC</div>
+                    <div>
+                      <div class="table-user-name">Sophie Carré</div>
+                      <div class="table-user-email">s.carre@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge--warning">Design</span></td>
+                <td><span class="badge badge--warning">En attente</span></td>
+                <td>
+                  <div class="progress" style="width:120px">
+                    <div class="progress__bar progress--warning" style="width:35%"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex gap-2">
+                    <button class="btn btn-sm btn-ghost">✏️</button>
+                    <button class="btn btn-sm btn-danger">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user">
+                    <div class="table-avatar" style="background:linear-gradient(135deg,var(--color-error),var(--color-primary))">PL</div>
+                    <div>
+                      <div class="table-user-name">Paul Lambert</div>
+                      <div class="table-user-email">p.lambert@email.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge--primary">Manager</span></td>
+                <td><span class="badge badge--error">Inactif</span></td>
+                <td>
+                  <div class="progress" style="width:120px">
+                    <div class="progress__bar progress--error" style="width:15%"></div>
+                  </div>
+                </td>
+                <td>
+                  <div class="flex gap-2">
+                    <button class="btn btn-sm btn-ghost">✏️</button>
+                    <button class="btn btn-sm btn-danger">🗑️</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ACTIVITÉ RÉCENTE -->
+        <div class="card">
+          <div class="card__header">
+            <div>
+              <div class="card__title">Activité récente</div>
+              <div class="card__subtitle">Dernières 24 heures</div>
+            </div>
+          </div>
+
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-dot activity-dot--success"></div>
+              <div>
+                <div class="activity-text"><strong>Marie Lebrun</strong> a créé un nouveau projet "Apollo"</div>
+                <div class="activity-time">Il y a 5 min</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot"></div>
+              <div>
+                <div class="activity-text"><strong>Thomas Dupont</strong> a mis à jour 3 fichiers</div>
+                <div class="activity-time">Il y a 18 min</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot activity-dot--warning"></div>
+              <div>
+                <div class="activity-text">Alerte : quota stockage à <strong>85%</strong></div>
+                <div class="activity-time">Il y a 32 min</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot activity-dot--error"></div>
+              <div>
+                <div class="activity-text">Erreur API sur le endpoint <code>/users/sync</code></div>
+                <div class="activity-time">Il y a 1h 12min</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot activity-dot--success"></div>
+              <div>
+                <div class="activity-text"><strong>Sophie Carré</strong> a rejoint l'équipe Design</div>
+                <div class="activity-time">Il y a 2h</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot"></div>
+              <div>
+                <div class="activity-text">Déploiement réussi en <strong>production</strong> v2.4.1</div>
+                <div class="activity-time">Il y a 3h 45min</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-dot activity-dot--warning"></div>
+              <div>
+                <div class="activity-text">Backup automatique <strong>terminé</strong> — 2.3 Go</div>
+                <div class="activity-time">Il y a 5h</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+          <button class="btn btn-ghost w-full" style="margin-top: var(--space-2);">
+            Voir toute l'activité →
+          </button>
+        </div>
+
+      </div><!-- /dashboard-grid basse -->
+
+
+      <!-- ══════════════════════════════════════════════════
+           SECTION THÈME ALT — démonstration
+           ══════════════════════════════════════════════════ -->
+      <div class="card theme-alt" style="margin-top: var(--space-2);">
+        <div class="card__header">
+          <div>
+            <div class="card__title" style="color:var(--color-primary-light)">🎨 Thème alternatif — <code>.theme-alt</code></div>
+            <div class="card__subtitle">Cette carte utilise le thème "Sunset". Toutes les variables sont surchargées localement.</div>
+          </div>
+          <span class="badge badge--warning">theme-alt</span>
+        </div>
+        <div class="flex gap-3" style="flex-wrap:wrap;">
+          <button class="btn btn-primary">Bouton Primary</button>
+          <button class="btn btn-secondary">Bouton Secondary</button>
+          <span class="badge badge--success">Success</span>
+          <span class="badge badge--error">Error</span>
+          <span class="badge badge--primary">Primary Alt</span>
+        </div>
+      </div>
+
+    </main><!-- /page-content -->
+
+  </div><!-- /main-wrapper -->
+
+</div><!-- /app-layout -->
+
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT — Interactions légères
+     ══════════════════════════════════════════════════════════ -->
+<script>
+// ── Toggle thème alternatif ──────────────────────────────────
+const themeToggle = document.getElementById('themeToggle');
+const app = document.getElementById('app');
+let isAlt = false;
+
+themeToggle.addEventListener('click', () => {
+  isAlt = !isAlt;
+  app.classList.toggle('theme-alt', isAlt);
+  themeToggle.textContent = isAlt ? '🌙' : '🎨';
+  themeToggle.title = isAlt ? 'Thème Sunset actif' : 'Changer de thème';
+});
+
+// ── Gestion navigation active ────────────────────────────────
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+// ── Mobile : toggle sidebar ──────────────────────────────────
+// (On pourrait ajouter un bouton hamburger ici)
+function handleResize() {
+  const sidebar = document.getElementById('sidebar');
+  if (window.innerWidth <= 768) {
+    sidebar.classList.remove('open');
+  }
+}
+window.addEventListener('resize', handleResize);
+</script>
+
+</body>
+</html>
